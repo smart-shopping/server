@@ -10,6 +10,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', require('./routes/index'));
-app.use('/users', require('./routes/users'));
+app.use('/api/music', require('./routes/music'));
 
 module.exports = app;
