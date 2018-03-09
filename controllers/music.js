@@ -51,11 +51,12 @@ module.exports = {
           if (error) {
             return console.error('Server failed:', error);
           }
-          // console.log('Server responded with:', body[0].faceAttributes.emotion);
+          // console.log('Server responded with:', body);
           let arrEmotion = []
           let strongestEmotion = '';
           let emotionScore = 0;
           let emotion = body[0].faceAttributes.emotion
+          console.log(emotion);
           delete emotion.contempt
           delete emotion.disgust
           delete emotion.surprise
@@ -68,7 +69,7 @@ module.exports = {
               strongestEmotion = key;
             }
           }
-          console.log(strongestEmotion);
+          console.log('strongestEmotion ==', strongestEmotion);
 
           request({
             method: 'GET',
@@ -82,26 +83,31 @@ module.exports = {
               return console.error('upload failed:', error);
             }
             // console.log('Server responded with:', body);
-            res.send(body)
+            console.log(body);
+            // body.emotion = arrEmotion
+            res.json({
+              body:JSON.parse(body),
+              emotion: arrEmotion
+            })
           })
         })
 
-        Spotify.getLoginUrl({
-          clientId: 'abc123jdhs3h4js',
-          redirectUri: 'https://example.com/callback?code=NApCCg..BkWtQ&state=profile%2Factivity',
-          responseType: [ 'code' ],
-          state: '34fFs29kd09',
-          scope: '*',
-          dialog: 'false',
-        })
-        .exec({
-          error: function (err) {
-            console.log(err);
-          },
-          success: function (result) {
-            // console.log(result);
-          },
-        });
+        // Spotify.getLoginUrl({
+        //   clientId: 'abc123jdhs3h4js',
+        //   redirectUri: 'https://example.com/callback?code=NApCCg..BkWtQ&state=profile%2Factivity',
+        //   responseType: [ 'code' ],
+        //   state: '34fFs29kd09',
+        //   scope: '*',
+        //   dialog: 'false',
+        // })
+        // .exec({
+        //   error: function (err) {
+        //     console.log(err);
+        //   },
+        //   success: function (result) {
+        //     // console.log(result);
+        //   },
+        // });
       },
     })
   }
