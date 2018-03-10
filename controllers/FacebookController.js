@@ -12,7 +12,7 @@ module.exports = {
             .exec()
             .then((user) => {
                 if (user) {
-                    let token = jwt.sign({userId : user._id, idFb : user.fb_id, email : user.email}, process.env.SECRET)
+                    let token = jwt.sign({userId : user._id, idFb : user.fb_id, email : user.email}, 'secret')
                     res.status(200).json({
                         message : `Login success`,
                         data : {
@@ -36,7 +36,7 @@ module.exports = {
                             })
                         }
 
-                        let token = jwt.sign({userId : newUser._id, fbId : newUser.id_fb, email : newUser.emai},process.env.SECRET)
+                        let token = jwt.sign({userId : newUser._id, fbId : newUser.id_fb, email : newUser.emai},'secret')
 
                         res.status(200).json({
                             message : `New account created, login success !`,
@@ -47,7 +47,7 @@ module.exports = {
                                 token   : token
                             }
                         })
-                    })                    
+                    })
                 }
             })
         })

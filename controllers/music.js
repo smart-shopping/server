@@ -42,12 +42,14 @@ module.exports = {
           uri: 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,accessories,exposure',
           headers: {
             'Content-Type': 'application/json',
-            'Ocp-Apim-Subscription-Key': process.env.SUBSCRIP_KEY
+            'Ocp-Apim-Subscription-Key': '5a1d4c8879b142a7ae0a6ee38ae21540'
           },
           json: {
             'url': req.body.sourceImage
           }
         }, (error, response, body) => {
+          console.log(req.body.sourceImage,"<<<<<<<<<<<< iMAGE");
+          console.log(body,"<<<<<<<<<<<");
           if (error) {
             return console.error('Server failed:', error);
           }

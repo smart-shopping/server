@@ -5,12 +5,12 @@ module.exports = {
         let providedToken   = req.headers.token;;
         if (providedToken) {
             try {
-                let decoded     = jwt.verify(providedToken, process.env.SECRET)
+                let decoded     = jwt.verify(providedToken, 'secret')
                 if(decoded) {
                     next()
                 }
 
-            } catch(err) {                
+            } catch(err) {
                 res.status(401).json({
                     message : 'Wrong token provided, authentication failed !'
                 })
