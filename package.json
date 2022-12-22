@@ -14,7 +14,7 @@
     "dotenv": "^5.0.1",
     "express": "~4.15.5",
     "fb": "^2.0.0",
-    "jsonwebtoken": "^8.2.0",
+    "jsonwebtoken": "^9.0.0",
     "machinepack-spotify": "^0.0.3",
     "mongodb": "^3.0.4",
     "mongoose": "^5.0.9",
